@@ -55,14 +55,11 @@ public class App {
         winners.add(athlete3);
 
         System.out.println("Podium: ");
-        for (Athlete athlete : winners) {
 
-            {
-                System.out.println("[Name: " + athlete.getName() + " Final standing: " +
-                        athlete.calculateFinalStandings() + "]");
-            }
-        }
 
+        int index=1;
+        for(Athlete athlete : winners)
+            System.out.println((index++)+": "+ athlete );
     }
 }
 

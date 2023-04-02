@@ -10,7 +10,7 @@ public class Athlete {
     private final int sessionTimeInSeconds;
 
     private final ShootingRange shootingRange;
-
+    int finalStandingsInSeconds = 0;
 
     public Athlete(int number, String name, String countryCode, int sessionTimeInSeconds, ShootingRange shootingRange) {
         this.number = number;
@@ -35,8 +35,6 @@ public class Athlete {
 
     public int  calculateFinalStandings(){
 
-        int finalStandingsInSeconds;
-
         finalStandingsInSeconds = sessionTimeInSeconds + calculatePenalties();
 
         return finalStandingsInSeconds;
@@ -48,7 +46,7 @@ public class Athlete {
 
     @Override
     public String toString() {
-        return "Athlete [Number: " + number + ", Name: " + name + ", Country: " + countryCode + ", Session time: "+ sessionTimeInSeconds + "]";
+        return "Athlete [Number: " + number + ", Name: " + name + ", Country: " + countryCode  + ", Final standings: " + finalStandingsInSeconds;
     }
 
 }
