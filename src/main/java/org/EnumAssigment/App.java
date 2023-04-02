@@ -1,27 +1,33 @@
 package org.EnumAssigment;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.*;
 
-
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeSet;
-
-
+/**
+ * - create a csv file;
+ * - read csv file;
+ * - add csv file as objects;
+ * - calculate shooting penalties;
+ * - calculate final standings (session time + penalties)
+ * TASK
+ * - write tests for the CSV parsing and the standing calculation
+ * - in  your tests you must not use real files
+ * - make sure the CSVs are read from memory to keep the tests fast
+ * - use Comparator / Comparable for sorting
+ * - use at least 1 Enum (in any situation) and at least 2 Annotations (they don't need to be custom)
+ */
 public class App {
+    public static void main(String[] args) {
 
-    public static void main(String[] args) throws IOException {
         String file = "file.csv";
-        Path path = Paths.get(file);
-        List<String> lines = Files.readAllLines(path);
-
-        for (String line : lines) {
-            System.out.println(line);
+        String line;
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+            while ((line = bufferedReader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
         }
 
 
@@ -29,49 +35,38 @@ public class App {
 
 
         Athlete athlete1 = new Athlete(11, "Umar Jorgson", "SK", 1827
-                , "xxxox", "xxxxx", "xxoxo");
+                , ShootingRange.SHOOTING_RANGE_ATHLETE1);
 
         Athlete athlete2 = new Athlete(1, "Jimmy Smiles", "UK", 1755
-                , "xxoox", "xooxo", "xxxxo");
+                , ShootingRange.SHOOTING_RANGE_ATHLETE2);
 
         Athlete athlete3 = new Athlete(27, "Piotr Smitzer", "CZ", 1810
-                , "xxxxx", "xxxxx", "xxxxx");
+                , ShootingRange.SHOOTING_RANGE_ATHLETE3);
+
 
         myBiathlon.addAthlete(athlete1);
         myBiathlon.addAthlete(athlete2);
         myBiathlon.addAthlete(athlete3);
 
-        Winner winner1 = new Winner(athlete1.calculateFinalStanding(),athlete1.getAthleteName());
-        Winner winner2 = new Winner(athlete2.calculateFinalStanding(),athlete2.getAthleteName());
-        Winner winner3 = new Winner(athlete3.calculateFinalStanding(),athlete3.getAthleteName());
+        TreeSet<Athlete> winners = new TreeSet<>(new StandingComparator());
 
-        athlete1.addWinner(winner3);
-        athlete2.addWinner(winner2);
-        athlete3.addWinner(winner1);
-
-
-        TreeSet<Athlete> winners = new TreeSet<>(new TimeComparator());
         winners.add(athlete1);
         winners.add(athlete2);
         winners.add(athlete3);
 
-        System.out.println("Winners sorted by time: ");
-        for (Athlete athlete : winners){
+        System.out.println("Podium: ");
+        for (Athlete athlete : winners) {
 
-            System.out.println( athlete.winners);
+            {
+                System.out.println("[Name: " + athlete.getName() + " Final standing: " +
+                        athlete.calculateFinalStandings() + "]");
+            }
         }
 
-
-        Map<String, List<Winner>> map = new HashMap<>();
-
-        map.put("WINNER",athlete1.winners);
-        map.put("RUNNER UP",athlete2.winners);
-        map.put("THIRD PLACE",athlete3.winners);
-
-
-        System.out.println("Winner - " + map.get("WINNER"));
-        System.out.println("Runner-up - " + map.get("RUNNER UP"));
-        System.out.println("Third place - " + map.get("THIRD PLACE"));
     }
 }
+
+
+
+
 

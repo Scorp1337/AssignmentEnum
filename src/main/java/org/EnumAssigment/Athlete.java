@@ -1,69 +1,54 @@
 package org.EnumAssigment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Athlete {
 
-    private final int athleteNumber;
-    private final String athleteName;
+    private final int number;
+    private final String name;
 
     private final String countryCode;
 
-    private final int sessionTimeResult;
+    private final int sessionTimeInSeconds;
 
-    private final String shootingRange1;
-    private final String shootingRange2;
-    private final String shootingRange3;
-
-    List<Winner> winners = new ArrayList<>();
+    private final ShootingRange shootingRange;
 
 
-    public Athlete(int athleteNumber, String athleteName, String countryCode, int sessionTimeResult,
-                   String shootingRange1, String shootingRange2, String shootingRange3) {
-        this.athleteNumber = athleteNumber;
-        this.athleteName = athleteName;
+    public Athlete(int number, String name, String countryCode, int sessionTimeInSeconds, ShootingRange shootingRange) {
+        this.number = number;
+        this.name = name;
         this.countryCode = countryCode;
-        this.sessionTimeResult = sessionTimeResult;
-        this.shootingRange1 = shootingRange1;
-        this.shootingRange2 = shootingRange2;
-        this.shootingRange3 = shootingRange3;
+        this.sessionTimeInSeconds = sessionTimeInSeconds;
+        this.shootingRange = shootingRange;
+
     }
 
-    public String getAthleteName() {
-        return athleteName;
-    }
+    public int calculatePenalties(){
 
-    public void addWinner(Winner winner){
-
-        winners.add(winner);
-}
-    public int calculatePenalties() {
-
-        String totalShooting = shootingRange1 + shootingRange2 + shootingRange3;
-
-        int penalties = 0;
-
-        for (int i = 0; i < totalShooting.length(); i++) {
-            if (totalShooting.charAt(i) == 'o') {
+        String totalShots = shootingRange.getShootingRange1() + shootingRange.getShootingRange2()+ shootingRange.getShootingRange3();
+        int penalties =0;
+        for(int i =0; i < totalShots.length();i++){
+            if(totalShots.charAt(i) == 'o'){
                 penalties += 10;
             }
         }
         return penalties;
     }
 
-    public int calculateFinalStanding() {
+    public int  calculateFinalStandings(){
 
-        int penalties = calculatePenalties();
+        int finalStandingsInSeconds;
 
-        int finalStandingResult = sessionTimeResult + penalties;
-        return finalStandingResult;
+        finalStandingsInSeconds = sessionTimeInSeconds + calculatePenalties();
+
+        return finalStandingsInSeconds;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
     public String toString() {
-        return "Number: " + athleteNumber + " Name: " + athleteName + " Country: " + countryCode;
+        return "Athlete [Number: " + number + ", Name: " + name + ", Country: " + countryCode + ", Session time: "+ sessionTimeInSeconds + "]";
     }
-
 
 }
