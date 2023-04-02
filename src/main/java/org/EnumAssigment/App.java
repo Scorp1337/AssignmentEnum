@@ -57,9 +57,9 @@ public class App {
         System.out.println("Podium: ");
 
 
-        int index=1;
+        int placement=1;
         for(Athlete athlete : winners)
-            System.out.println((index++)+": "+ athlete );
+            System.out.println((placement++)+": "+ athlete );
     }
 }
 
