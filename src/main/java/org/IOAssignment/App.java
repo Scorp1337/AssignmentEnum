@@ -1,4 +1,4 @@
-package org.EnumAssigment;
+package org.IOAssignment;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -35,13 +35,14 @@ public class App {
 
 
         Athlete athlete1 = new Athlete(11, "Umar Jorgson", "SK", 1827
-                , ShootingRange.SHOOTING_RANGE_ATHLETE1);
+                , "xxxox", "xxxxx", "xxoxo");
 
         Athlete athlete2 = new Athlete(1, "Jimmy Smiles", "UK", 1755
-                , ShootingRange.SHOOTING_RANGE_ATHLETE2);
+                , "xxoox", "xooxo", "xxxxo");
 
         Athlete athlete3 = new Athlete(27, "Piotr Smitzer", "CZ", 1810
-                , ShootingRange.SHOOTING_RANGE_ATHLETE3);
+                ,"xxxxx", "xxxxx", "xxxxx");
+
 
 
         myBiathlon.addAthlete(athlete1);
@@ -59,7 +60,9 @@ public class App {
 
         int placement=1;
         for(Athlete athlete : winners)
-            System.out.println((placement++)+": "+ athlete );
+            System.out.println((placement++)+ " "+ athlete );
+
+
     }
 }
 

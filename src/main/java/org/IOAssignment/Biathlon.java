@@ -1,11 +1,14 @@
-package org.EnumAssigment;
+package org.IOAssignment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 public class Biathlon {
 
     public List<Athlete> athleteList = new ArrayList<>();
+
+
 
     public void addAthlete(Athlete athlete) {
         if (athleteList.contains(athlete)) {
@@ -21,6 +24,5 @@ public class Biathlon {
         }
 
     }
-
 }
 

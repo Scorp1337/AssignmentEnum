@@ -1,4 +1,4 @@
-package org.EnumAssigment;
+package org.IOAssignment;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
