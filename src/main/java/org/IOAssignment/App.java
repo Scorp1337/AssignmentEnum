@@ -2,7 +2,7 @@ package org.IOAssignment;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.*;
+
 
 /**
  * - create a csv file;
@@ -49,19 +49,8 @@ public class App {
         myBiathlon.addAthlete(athlete2);
         myBiathlon.addAthlete(athlete3);
 
-        TreeSet<Athlete> winners = new TreeSet<>(new StandingComparator());
 
-        winners.add(athlete1);
-        winners.add(athlete2);
-        winners.add(athlete3);
-
-        System.out.println("Podium: ");
-
-
-        int placement=1;
-        for(Athlete athlete : winners)
-            System.out.println((placement++)+ " "+ athlete );
-
+        myBiathlon.displayAthletesByFinalStandingOrder(myBiathlon.athleteList);
 
     }
 }

@@ -2,12 +2,10 @@ package org.IOAssignment;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TreeSet;
 
 public class Biathlon {
 
     public List<Athlete> athleteList = new ArrayList<>();
-
 
 
     public void addAthlete(Athlete athlete) {
@@ -18,11 +16,14 @@ public class Biathlon {
         }
     }
 
-    public void listAthlete() {
-        for (Athlete athlete : athleteList) {
-            System.out.println(athlete);
-        }
+    public void displayAthletesByFinalStandingOrder(List<Athlete> athleteList) {
+        athleteList.sort(new StandingComparator());
+        int placement = 1;
 
+        for (Athlete athlete : athleteList) {
+            System.out.println((placement++) + " - " +  athlete);
+        }
     }
+
 }
 

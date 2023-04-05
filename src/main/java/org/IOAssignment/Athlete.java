@@ -54,4 +54,8 @@ public class Athlete {
         return "Athlete [Nr: " + number + ", Name: " + name + ", Final standings: " + finalStandingsInSeconds + "]";
     }
 
+    public int getSessionTimeInSeconds() {
+        return sessionTimeInSeconds;
+    }
+
 }

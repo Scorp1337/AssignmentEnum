@@ -21,13 +21,19 @@ class AthleteTest {
 
     @Test
     void calculateTheFinalStandings() {
-        int finalStanding = 1000;
-        int penalties = 50;
+        Athlete athlete1 = new Athlete(1, "Jhon", "DE", 1250,
+                "xxxoo", "oxxxx", "xoxxxx");
 
-        int finalStandingResult = finalStanding + penalties;
 
-        assertEquals(1050, finalStandingResult);
+        int result = athlete1.getSessionTimeInSeconds() + athlete1.calculatePenalties();
+
+        assertEquals(1290, result);
+
+        
     }
 
-}
 
+
+
+
+}
