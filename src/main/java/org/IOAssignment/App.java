@@ -41,8 +41,7 @@ public class App {
                 , "xxoox", "xooxo", "xxxxo");
 
         Athlete athlete3 = new Athlete(27, "Piotr Smitzer", "CZ", 1810
-                ,"xxxxx", "xxxxx", "xxxxx");
-
+                , "xxxxx", "xxxxx", "xxxxx");
 
 
         myBiathlon.addAthlete(athlete1);

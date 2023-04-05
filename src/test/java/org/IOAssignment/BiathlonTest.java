@@ -2,8 +2,11 @@ package org.IOAssignment;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BiathlonTest {
     @Test
@@ -26,7 +29,7 @@ class BiathlonTest {
 
         myBiathlon.addAthlete(athlete);
 
-        assertEquals(1,myBiathlon.athleteList.size());
+        assertEquals(1, myBiathlon.athleteList.size());
 
     }
 
@@ -43,7 +46,7 @@ class BiathlonTest {
         myBiathlon.addAthlete(athlete);
         myBiathlon.addAthlete(athlete2);
 
-        assertEquals(2,myBiathlon.athleteList.size());
+        assertEquals(2, myBiathlon.athleteList.size());
 
     }
 
@@ -51,6 +54,7 @@ class BiathlonTest {
     @Test
     void displayAthletesByFinalStandingOrder() {
         Biathlon myBiathlon = new Biathlon();
+        myBiathlon.athleteList = new ArrayList<>();
 
         Athlete athlete1 = new Athlete(11, "Umar Jorgson", "SK", 1827
                 , "xxxox", "xxxxx", "xxoxo");
@@ -59,13 +63,20 @@ class BiathlonTest {
                 , "xxoox", "xooxo", "xxxxo");
 
         Athlete athlete3 = new Athlete(27, "Piotr Smitzer", "CZ", 1810
-                ,"xxxxx", "xxxxx", "xxxxx");
+                , "xxxxx", "xxxxx", "xxxxx");
 
         myBiathlon.addAthlete(athlete1);
         myBiathlon.addAthlete(athlete2);
         myBiathlon.addAthlete(athlete3);
 
-        fail("Nu reusesc sa demonstrez ca sortarea atletilor este corecta");
+        athlete1.finalStandingsInSeconds = athlete1.getSessionTimeInSeconds() + athlete1.calculatePenalties();
+        athlete2.finalStandingsInSeconds = athlete2.getSessionTimeInSeconds() + athlete2.calculatePenalties();
+        athlete3.finalStandingsInSeconds = athlete3.getSessionTimeInSeconds() + athlete3.calculatePenalties();
+
+        List<Athlete> testList = myBiathlon.athleteList;
+        testList.sort(new StandingComparator());
+
+        assertEquals(myBiathlon.athleteList,testList);
 
 
     }

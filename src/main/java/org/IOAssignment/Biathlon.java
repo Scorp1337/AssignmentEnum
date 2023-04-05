@@ -21,7 +21,7 @@ public class Biathlon {
         int placement = 1;
 
         for (Athlete athlete : athleteList) {
-            System.out.println((placement++) + " - " +  athlete);
+            System.out.println((placement++) + " - " + athlete);
         }
     }
 

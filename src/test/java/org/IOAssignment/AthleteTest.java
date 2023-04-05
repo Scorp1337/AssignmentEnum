@@ -2,7 +2,6 @@ package org.IOAssignment;
 
 import org.junit.jupiter.api.Test;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AthleteTest {
@@ -25,15 +24,12 @@ class AthleteTest {
                 "xxxoo", "oxxxx", "xoxxxx");
 
 
-        int result = athlete1.getSessionTimeInSeconds() + athlete1.calculatePenalties();
+        int result = athlete1.calculateFinalStandings();
 
         assertEquals(1290, result);
 
-        
+
     }
-
-
-
 
 
 }
